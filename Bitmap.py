@@ -14,7 +14,7 @@ grid_size = (pixel_size + grid_spacing) * 16
 grid_margin = 2 * mm
 pixel_height = 1.5 * mm
 card_base_thickness = 1 * mm
-padding_between_cards = 1.0 + pixel_size + card_base_thickness
+padding_between_cards = 2.0 + pixel_size + card_base_thickness
 
 tolerance = 0.2 * mm
 
@@ -89,20 +89,20 @@ class BloomCommandExecuteHandler(adsk.core.CommandEventHandler):
             # Get the command inputs
             inputs = args.command.commandInputs
             name = inputs.itemById('nameInput').value
-            paragraph = inputs.itemById('itemsInput').text
+            items_str = inputs.itemById('itemsInput').text
 
             # Get the active design and component
             design = _app.activeProduct
             component = design.activeComponent
 
-            items = [s.strip() for s in paragraph.split('\n')]
+            items = [s.strip() for s in items_str.split('\n')]
             bloom = create_bloom_filter(items)
 
             draw_bloom_component(bloom, name, component)
 
             item_spacing = padding_between_cards
             item_height = item_spacing
-            for item in items[0:2]:
+            for item in items:
                 draw_hash_item(item, item_height, component)
                 item_height = item_height + padding_between_cards
         except:
@@ -128,8 +128,8 @@ class BloomCommandCreatedHandler(adsk.core.CommandCreatedEventHandler):
             # Define the inputs
 
             inputs = cmd.commandInputs
-            inputs.addStringValueInput('nameInput', 'Name', 'Crops')
-            inputs.addTextBoxCommandInput('itemsInput', 'Items', 'Oats\nPeas\nBeans\nBarley', 5, False)
+            inputs.addStringValueInput('nameInput', 'Name', 'Fruit')
+            inputs.addTextBoxCommandInput('itemsInput', 'Items', 'Tomato\nApple\nBanana\nPear\nCucumber', 5, False)
 
         except:
             _ui.messageBox('Failed:\n{}'.format(traceback.format_exc()))
