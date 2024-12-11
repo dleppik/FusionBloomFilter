@@ -130,6 +130,7 @@ class BloomCommandCreatedHandler(adsk.core.CommandCreatedEventHandler):
             inputs = cmd.commandInputs
             inputs.addStringValueInput('nameInput', 'Name', 'Fruit')
             inputs.addTextBoxCommandInput('itemsInput', 'Items', 'Tomato\nApple\nBanana\nPear\nCucumber', 5, False)
+            # Veggies (for contrast): Carrot, Lettuce, Beet, Broccoli, Cauliflower, Tomato, Cucumber
 
         except:
             _ui.messageBox('Failed:\n{}'.format(traceback.format_exc()))
