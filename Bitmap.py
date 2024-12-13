@@ -271,7 +271,7 @@ def draw_item_text(name: str, component, plane):
     global grid_spacing, pixel_size, grid_size, grid_margin, pixel_height, tolerance
     global card_top_left, item_card_bottom_right, filter_card_bottom_right
 
-    plate_height = pixel_height + (0.1 * mm) # use tighter tolerance for good looks
+    plate_extrude_distance = pixel_height + (0.1 * mm) # use tighter tolerance for good looks
 
     sketches = component.sketches
     sketch = sketches.add(plane)
@@ -281,13 +281,13 @@ def draw_item_text(name: str, component, plane):
     extrudes = component.features.extrudeFeatures
 
     lines = sketch.sketchCurves.sketchLines
-    plate_top_y = tolerance + filter_card_bottom_right[1]
+    plate_top_y =  filter_card_bottom_right[1] - tolerance
 
     p1 = adsk.core.Point3D.create(card_top_left[0], plate_top_y, 0)
     p2 = adsk.core.Point3D.create(item_card_bottom_right[0], item_card_bottom_right[1], 0)
     lines.addTwoPointRectangle(p1, p2)
     extrudes.addSimple(sketch.profiles.item(0),
-                       adsk.core.ValueInput.createByReal(-plate_height),
+                       adsk.core.ValueInput.createByReal(-plate_extrude_distance),
                        adsk.fusion.FeatureOperations.JoinFeatureOperation)
 
     # Create & extrude the text
@@ -329,11 +329,11 @@ def draw_item_text(name: str, component, plane):
     info_text_obj = sketch_texts.add(info_text_input)
 
     extrudes.addSimple(name_text_obj,
-                       adsk.core.ValueInput.createByReal(-1 * mm - plate_height),
+                       adsk.core.ValueInput.createByReal(-1 * mm - plate_extrude_distance),
                        adsk.fusion.FeatureOperations.JoinFeatureOperation)
 
     extrudes.addSimple(info_text_obj,
-                       adsk.core.ValueInput.createByReal(-1 * mm - plate_height),
+                       adsk.core.ValueInput.createByReal(-1 * mm - plate_extrude_distance),
                        adsk.fusion.FeatureOperations.JoinFeatureOperation)
 
 def draw_bloom_text(name: str, component, plane):
