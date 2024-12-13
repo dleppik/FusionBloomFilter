@@ -2,6 +2,8 @@
 
 ### A 3D-printable Bloom filter
 
+In the form of Fusion 360 Python plugin code.
+
 ![alt text][fruitAndVeggieFilter]
 
 ## What the heck is a Bloom filter?
