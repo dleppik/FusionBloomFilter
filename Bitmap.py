@@ -1,10 +1,13 @@
+# FusionBloomFilter © 2024 by David Leppik is licensed under Creative Commons Attribution-NonCommercial 4.0 International
+# See https://creativecommons.org/licenses/by-nc/4.0/
+
 import adsk.core, adsk.fusion, traceback
 import hashlib
 
-# Global variables to keep references
-_app = None
-_ui = None
-_handlers = []
+default_category_name = 'Fruit'
+default_category_items = 'Tomato\nApple\nBanana\nPear\nCucumber'
+# Veggies (for contrast): Carrot, Lettuce, Beet, Broccoli, Cauliflower, Tomato, Cucumber
+
 
 # Fusion coordinates/sizes are in cm
 mm = 0.1
@@ -27,6 +30,11 @@ item_card_bottom_right = (-grid_margin - grid_spacing, -4)
 # The maximum number of pixels set in the Bloom filter is
 # this times the number of items.
 num_hashes = 10
+
+# Fusion global variables to keep references
+_app = None
+_ui = None
+_handlers = []
 
 #
 # Bloom filter utils
@@ -115,6 +123,7 @@ class BloomCommandCreatedHandler(adsk.core.CommandCreatedEventHandler):
         super().__init__()
 
     def notify(self, args):
+
         try:
             cmd = args.command
 
@@ -128,9 +137,8 @@ class BloomCommandCreatedHandler(adsk.core.CommandCreatedEventHandler):
             # Define the inputs
 
             inputs = cmd.commandInputs
-            inputs.addStringValueInput('nameInput', 'Name', 'Fruit')
-            inputs.addTextBoxCommandInput('itemsInput', 'Items', 'Tomato\nApple\nBanana\nPear\nCucumber', 5, False)
-            # Veggies (for contrast): Carrot, Lettuce, Beet, Broccoli, Cauliflower, Tomato, Cucumber
+            inputs.addStringValueInput('nameInput', 'Name', default_category_name)
+            inputs.addTextBoxCommandInput('itemsInput', 'Items', default_category_items, 5, False)
 
         except:
             _ui.messageBox('Failed:\n{}'.format(traceback.format_exc()))
