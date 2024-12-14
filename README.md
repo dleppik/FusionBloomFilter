@@ -46,12 +46,12 @@ grid where each number between 0 and 255—and therefore each hash value—has a
 pixel. By representing an item with a 1-byte hash, we set up to 10 bits. For example, the
 word "Banana" has a sparse hash which looks like this:
 
-![Banana bitmap](./BananaBitmap.png)
+![Banana bitmap](./docResources/BananaBitmap.png)
 
 From here, we can combine sparse hashes to form a Bloom filter. We print the filters as punchcards
 and item hashes as cards with pixel pegs. The end result, in 3D printable form, looks like this:
 
-![3D printed Tomato and Banana cards with Fruit and Veggie filters attached](./FilteredItems.jpeg)
+![3D printed Tomato and Banana cards with Fruit and Veggie filters attached](docResources/FilteredItems.jpeg)
 
-[fruitAndVeggieFilter]: ./FruitsAndVeggies.jpeg "Two 3D printed Bloom filters consisting of a black square plastic punchcard labeled Veggies and Fruit"
+[fruitAndVeggieFilter]: docResources/FruitsAndVeggies.jpeg "Two 3D printed Bloom filters consisting of a black square plastic punchcard labeled Veggies and Fruit"
 [pidgeonhole]: https://en.wikipedia.org/wiki/Pigeonhole_principle:
