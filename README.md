@@ -59,4 +59,4 @@ Under "Scripts and Add-ins" (currently under the Utilities tab in Design mode) s
 to "My Scripts" to add the script. Then select it and hit "Run".
 
 [fruitAndVeggieFilter]: docResources/FruitsAndVeggies.jpeg "Two 3D printed Bloom filters consisting of a black square plastic punchcard labeled Veggies and Fruit"
-[pidgeonhole]: https://en.wikipedia.org/wiki/Pigeonhole_principle:
+[pidgeonhole]: https://en.wikipedia.org/wiki/Pigeonhole_principle
