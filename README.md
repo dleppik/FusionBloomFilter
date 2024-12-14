@@ -53,5 +53,10 @@ and item hashes as cards with pixel pegs. The end result, in 3D printable form, 
 
 ![3D printed Tomato and Banana cards with Fruit and Veggie filters attached](docResources/FilteredItems.jpeg)
 
+## How do I run it in Fusion?
+
+Under "Scripts and Add-ins" (currently under the Utilities tab in Design mode) select "+" next
+to "My Scripts" to add the script. Then select it and hit "Run".
+
 [fruitAndVeggieFilter]: docResources/FruitsAndVeggies.jpeg "Two 3D printed Bloom filters consisting of a black square plastic punchcard labeled Veggies and Fruit"
 [pidgeonhole]: https://en.wikipedia.org/wiki/Pigeonhole_principle:
